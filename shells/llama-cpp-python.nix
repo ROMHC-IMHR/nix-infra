@@ -6,7 +6,7 @@
       config.cudaSupport = true;
     };
   in {
-    devShells.llamaInference = pkgs.mkShell {
+    devShells.llama-cpp-python = pkgs.mkShell {
       buildInputs = with pkgs; [
         (python3.withPackages (ps:
           with ps; [
