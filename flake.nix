@@ -20,7 +20,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
       imports = [
-        (inputs.import-tree ./apps)
+        (inputs.import-tree ./modules)
         (inputs.import-tree ./shells)
       ];
     };
