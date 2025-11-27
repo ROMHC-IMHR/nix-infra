@@ -26,7 +26,8 @@
         };
         text = ''
           exec ${pkgs.lib.getExe self'.packages.llama-cpp-python} \
-               ${lib.escapeShellArgs modelArgs}
+            ${lib.escapeShellArgs modelArgs} \
+            "$@"
         '';
       };
     };
