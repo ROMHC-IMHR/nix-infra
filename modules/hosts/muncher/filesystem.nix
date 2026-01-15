@@ -11,8 +11,8 @@
       label = "crnr-root";
       fsType = "ext4";
     };
-    fileSystems."/boot/efi" = {
-      label = "crnr-boot";
+    fileSystems."/boot" = {
+      label = "CRNR-BOOT";
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };
