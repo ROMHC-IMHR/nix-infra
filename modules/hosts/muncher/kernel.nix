@@ -8,8 +8,13 @@
       initrd.availableKernelModules = ["xhci_pci" "ahci" "vmd" "nvme" "usbhid"];
       kernelModules = ["kvm-intel"];
       loader = {
-        systemd-boot.enable = true;
-        boot.loader.efi.canTouchEfiVariables = true;
+        systemd-boot.enable = false;
+        grub = {
+          enable = true;
+          device = "nodev";
+          efiSupport = true;
+        };
+        efi.canTouchEfiVariables = true;
       };
     };
     hardware = {
