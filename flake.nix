@@ -1,9 +1,10 @@
 {
   description = "AI infrastructure at IMHR.";
   inputs = {
-    import-tree.url = "github:vic/import-tree";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    kc-nix-infra.url = "github:KerryCerqueira/nix-infra";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     expy = {
       url = "github:KerryCerqueira/expy";
       inputs.nixpkgs.follows = "nixpkgs";
