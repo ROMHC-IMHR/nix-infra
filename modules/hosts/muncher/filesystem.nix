@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.cruncher = {
+  flake.nixosModules.muncher = {
     services.fstrim.enable = true;
     zramSwap = {
       enable = true;
