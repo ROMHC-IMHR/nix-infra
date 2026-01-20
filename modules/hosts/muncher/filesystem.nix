@@ -17,7 +17,11 @@
       options = ["fmask=0077" "dmask=0077"];
     };
     fileSystems."/home" = {
-      device = "crnr-home";
+      label = "crnr-home";
+      fsType = "ext4";
+    };
+    fileSystems."/nix" = {
+      label = "crnr-nix";
       fsType = "ext4";
     };
   };
