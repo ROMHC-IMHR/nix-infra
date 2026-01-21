@@ -1,0 +1,20 @@
+age_keys:
+  # System-level secrets on muncher
+  - &muncher age10pkhfq9cq57yucgk2wlzvp4tn0ld593yeegrprrx7ttqfsk5ucqqgkue42
+  # Kerry's master encryption key
+  - &kerry_master age1xvyp63kuszp4u0ke4lf84wstgt6td04v6w605twh3mwqaedv9u8sdm8g4j
+  # Kerry's key on muncher
+  - &kerry_muncher age13p04rv6crvj22gqdfjdt4w2edujt76wf3kyf4p3x2jtnjclc7a8qmasr5s
+creation_rules:
+  - path_regex: ^modules/hosts/muncher/secrets.yaml$
+    key_groups:
+      - age:
+          - *muncher
+          - *kerry_master
+          - *kerry_muncher
+  # - path_regex: ^modules/hosts/muncher/users/kerry/secrets.yaml$
+  #   key_groups:
+  #     - age:
+  #         - *muncher
+  #         - *kerry_master
+  #         - *kerry_muncher

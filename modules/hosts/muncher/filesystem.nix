@@ -24,5 +24,16 @@
       label = "crnr-nix";
       fsType = "ext4";
     };
+    fileSystems."/mnt/ssdstore" = {
+      label = "SSD_2TB";
+      fsType = "ext4";
+    };
+    fileSystems."/mnt/hddstore" = {
+      label = "HDD_12TB";
+      fsType = "ext4";
+    };
+    systemd.tmpfiles.rules = [
+      "d /mnt/ssdstore 0755 root root -"
+    ];
   };
 }
