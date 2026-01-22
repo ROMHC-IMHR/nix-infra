@@ -1,6 +1,9 @@
 {
   flake.nixosModules.muncher = {
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
     nix = {
       settings = {
         experimental-features = [
