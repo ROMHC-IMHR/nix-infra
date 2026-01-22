@@ -29,6 +29,7 @@
           }";
           ENABLE_SIGNUP = "True";
           DEFAULT_USER_ROLE = "pending";
+          USE_CUDA = "True";
         };
         environmentFile = config.sops.secrets."openwebui/environment".path;
       };
