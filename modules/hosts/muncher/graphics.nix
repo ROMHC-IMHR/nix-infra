@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.muncher = {config, ...}: {
+  flake.nixosModules.muncher = {config, pkgs, ...}: {
     services.xserver.videoDrivers = ["nvidia"];
     hardware.graphics = {
       enable = true;
@@ -11,5 +11,8 @@
       nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.production;
     };
+    environment.systemPackages = with pkgs; [
+      nvtopPackages.nvidia
+    ];
   };
 }
