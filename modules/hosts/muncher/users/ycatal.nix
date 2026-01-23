@@ -20,6 +20,9 @@
       description = fullname;
       uid = uid;
       openssh.authorizedKeys.keys = sshKeys;
+      packages = with pkgs; [
+        uv
+      ];
     };
     fileSystems."${ssdHomePath}" = {
       device = ssdPath;
