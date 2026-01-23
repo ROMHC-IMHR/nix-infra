@@ -1,15 +1,15 @@
-let
-  username = "ktabay";
-  fullname = "Konrad Tabay";
-  sshKeys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJSimJGwX8BKJmip04XakVzcjl39tD09vNICeIK5lO0S"
-  ];
-in {
+{
   flake.nixosModules.muncher = {
     config,
     pkgs,
     ...
   }: let
+    username = "ktabay";
+    fullname = "Konrad Tabay";
+    uid = 1001;
+    sshKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJSimJGwX8BKJmip04XakVzcjl39tD09vNICeIK5lO0S"
+    ];
     hddPath = "/mnt/hddstore/users/${username}";
     hddHomePath = "/home/${username}/hdd";
     ssdPath = "mnt/ssdstore/users/${username}";
@@ -18,7 +18,7 @@ in {
     users.users."${username}" = {
       isNormalUser = true;
       description = fullname;
-      uid = 1001;
+      uid = uid;
       openssh.authorizedKeys.keys = sshKeys;
       packages = with pkgs; [
         uv
