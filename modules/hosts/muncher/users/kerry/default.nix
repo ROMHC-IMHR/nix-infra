@@ -1,10 +1,18 @@
 {inputs, ...}: {
-  flake.nixosModules.muncher = {config, ...}: {
+  flake.nixosModules.muncher = {
+    config,
+    pkgs,
+    ...
+  }: {
     users.users.kerry = {
       isNormalUser = true;
       description = "Kerry Cerqueira";
       extraGroups = ["networkmanager" "wheel"];
       uid = 1000;
+      shell = pkgs.fish;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtCFAEnUE/6pRWjylYWqAgsfswF0GTlK04ZKMjWNiZn kerry@claudius"
+      ];
     };
     home-manager.users.kerry = {
       imports = [
