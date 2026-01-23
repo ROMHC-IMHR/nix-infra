@@ -26,6 +26,7 @@
       which
       tmux
       screen
+      kitty.terminfo
     ];
   };
 }
