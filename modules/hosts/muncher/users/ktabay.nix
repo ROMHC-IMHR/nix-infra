@@ -1,4 +1,4 @@
-{self, ...}: let
+let
   username = "ktabay";
   fullname = "Konrad Tabay";
   sshKeys = [
@@ -11,9 +11,9 @@ in {
     ...
   }: let
     hddPath = "/mnt/hddstore/users/${username}";
-    hddHomePath = "${config.users.users.ktabay.home}/hdd";
+    hddHomePath = "/home/${username}/hdd";
     ssdPath = "mnt/ssdstore/users/${username}";
-    ssdHomePath = "${config.users.users.ktabay.home}/ssd";
+    ssdHomePath = "/home/${username}/ssd";
   in {
     users.users."${username}" = {
       isNormalUser = true;
@@ -23,9 +23,6 @@ in {
       packages = with pkgs; [
         uv
       ];
-    };
-    home-manager.users."${username}" = {
-      imports = [self.homeModules."${username}"];
     };
     fileSystems."${ssdHomePath}" = {
       device = ssdPath;
