@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.muncher = {pkgs, ...}: {
     nixpkgs.config = {
       allowUnfree = true;
       cudaSupport = true;
@@ -23,6 +23,32 @@
         dates = "weekly";
         options = "--delete-older-than 30d";
       };
+    };
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib # libstdc++.so.6
+        zlib
+        glib
+        glibc
+        openssl
+        libxml2
+        libz
+        libGL
+        libxkbcommon
+        fontconfig
+        freetype
+        xorg.libX11
+        xorg.libXext
+        xorg.libXrender
+        xorg.libICE
+        xorg.libSM
+        gfortran.cc.lib
+        curl
+        linuxPackages.nvidia_x11
+        cudaPackages.cudatoolkit
+        cudaPackages.cudnn
+      ];
     };
   };
 }
