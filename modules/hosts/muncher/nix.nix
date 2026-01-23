@@ -27,7 +27,7 @@
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        stdenv.cc.cc.lib # libstdc++.so.6
+        stdenv.cc.cc.lib
         zlib
         glib
         glibc
