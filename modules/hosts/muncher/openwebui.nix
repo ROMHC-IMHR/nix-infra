@@ -7,6 +7,7 @@
       lib,
       ...
     }: {
+      networking.firewall.allowedTCPPorts = [ 8080 ];
       sops.secrets = {
         "openwebui/environment" = {
           owner = "root";
@@ -18,7 +19,7 @@
       services.open-webui = {
         enable = true;
         port = 8080;
-        host = "127.0.0.1";
+        host = "0.0.0.0";
         stateDir = owuiStateDir;
         environment = {
           ANONYMIZED_TELEMETRY = "False";

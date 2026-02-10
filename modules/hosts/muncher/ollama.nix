@@ -9,6 +9,10 @@
   in {
     services.ollama = {
       enable = true;
+      environmentVariables = {
+        OLLAMA_NUM_PARALLEL = "4";
+        OLLAMA_FLASH_ATTENTION = "1";
+      };
       package = pkgs.ollama-cuda;
       host = "127.0.0.1";
       port = 11434;
