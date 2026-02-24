@@ -31,10 +31,11 @@
             isReadOnly = true;
           };
         };
-        config = {...}: {
-          nixpkgs.pkgs = import inputs.owui-nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
+        nixpkgs = inputs.owui-nixpkgs;
+        config = {pkgs, ...}: {
+          nixpkgs.config = {
+            allowUnfree = true;
+            cudaSupport = true;
           };
           services.open-webui = {
             enable = true;
