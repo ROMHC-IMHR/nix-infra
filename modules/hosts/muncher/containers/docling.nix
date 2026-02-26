@@ -1,70 +1,35 @@
 {inputs, ...}: {
   flake.nixosModules.muncher = {
+    pkgs,
     config,
     lib,
     ...
-  }: {
-    containers.docling = {
-      allowedDevices = [
-        {
-          node = "/dev/nvidia0";
-          modifier = "rw";
-        }
-        {
-          node = "/dev/nvidia1";
-          modifier = "rw";
-        }
-        {
-          node = "/dev/nvidiactl";
-          modifier = "rw";
-        }
-        {
-          node = "/dev/nvidia-uvm";
-          modifier = "rw";
-        }
-        {
-          node = "/dev/nvidia-uvm-tools";
-          modifier = "rw";
-        }
+  }: let
+    graniteModel = pkgs.fetchgit {
+      url = "https://huggingface.co/ibm-granite/granite-docling-258M";
+      rev = "982fe3b40f2fa73c365bdb1bcacf6c81b7184bfe";
+      fetchLFS = true;
+      hash = "sha256-wQpktGnq2yHt6jqK5HqN/ilVdjbUAB5ZVEB2qlEIhJI=";
+    };
+  in {
+    hardware.nvidia-container-toolkit.enable = true;
+    virtualisation.oci-containers.containers.docling = {
+      image = "ghcr.io/docling-project/docling-serve-cu128:v1.13.1";
+      environment = {
+        DOCLING_SERVE_ENABLE_UI = "true";
+        DOCLING_SERVE_ENABLE_REMOTE_SERVICES = "true";
+        DOCLING_SERVE_MAX_DOCUMENT_TIMEOUT = "300";
+        DOCLING_DEVICE = "cuda:0";
+        RAPIDOCR_ORT_PROVIDERS = "CUDAExecutionProvider,CPUExecutionProvider";
+        ORT_DISABLE_AZURE = "1";
+      };
+      ports = ["5001:5001"];
+      extraOptions = [
+        "--device=nvidia.com/gpu=0"
       ];
-      autoStart = true;
-      bindMounts = {
-        "/dev/nvidia0" = {
-          hostPath = "/dev/nvidia0";
-          isReadOnly = false;
-        };
-        "/dev/nvidia1" = {
-          hostPath = "/dev/nvidia1";
-          isReadOnly = false;
-        };
-        "/dev/nvidiactl" = {
-          hostPath = "/dev/nvidiactl";
-          isReadOnly = false;
-        };
-        "/dev/nvidia-uvm" = {
-          hostPath = "/dev/nvidia-uvm";
-          isReadOnly = false;
-        };
-        "/dev/nvidia-uvm-tools" = {
-          hostPath = "/dev/nvidia-uvm-tools";
-          isReadOnly = false;
-        };
-        "/run/opengl-driver" = {
-          hostPath = "/run/opengl-driver";
-          isReadOnly = true;
-        };
-      };
-      config = {pkgs, ...}: {
-        hardware.graphics.enable = true;
-        services.docling-serve = {
-          enable = true;
-          port = 5001;
-          host = "0.0.0.0";
-        };
-        # system.stateVersion = "26.05";
-      };
-      nixpkgs = inputs.docling-nixpkgs;
-      privateNetwork = false;
+      volumes = [
+        "${graniteModel}:/opt/app-root/src/.cache/docling/models/ibm-granite--granite-docling-258M:ro"
+      ];
     };
   };
 }
