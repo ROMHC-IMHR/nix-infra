@@ -1,6 +1,7 @@
 {
   description = "AI infrastructure at IMHR.";
   inputs = {
+    arion.url = "github:hercules-ci/arion";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     kc-nix-infra = {
