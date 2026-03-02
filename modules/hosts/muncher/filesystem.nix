@@ -8,20 +8,24 @@
       memoryPercent = 25;
     };
     fileSystems."/" = {
-      label = "crnr-root";
+      label = "mncr-root";
       fsType = "ext4";
     };
     fileSystems."/boot" = {
-      label = "CRNR-BOOT";
+      label = "MNCR-BOOT";
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };
     fileSystems."/home" = {
-      label = "crnr-home";
+      label = "mncr-home";
       fsType = "ext4";
     };
     fileSystems."/nix" = {
-      label = "crnr-nix";
+      label = "mncr-nix";
+      fsType = "ext4";
+    };
+    fileSystems."/var" = {
+      label = "mncr-var";
       fsType = "ext4";
     };
     fileSystems."/mnt/ssdstore" = {
