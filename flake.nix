@@ -14,6 +14,7 @@
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     owui-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    ollama-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     docling-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     sops-nix = {
       url = "github:Mic92/sops-nix";

@@ -1195,6 +1195,22 @@
         "type": "indirect"
       }
     },
+    "ollama-nixpkgs": {
+      "locked": {
+        "lastModified": 1772433332,
+        "narHash": "sha256-izhTDFKsg6KeVBxJS9EblGeQ8y+O8eCa6RcW874vxEc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cf59864ef8aa2e178cccedbe2c178185b0365705",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "owui-nixpkgs": {
       "locked": {
         "lastModified": 1771903837,
@@ -1330,6 +1346,7 @@
         "import-tree": "import-tree",
         "kc-nix-infra": "kc-nix-infra",
         "nixpkgs": "nixpkgs_4",
+        "ollama-nixpkgs": "ollama-nixpkgs",
         "owui-nixpkgs": "owui-nixpkgs",
         "sops-nix": "sops-nix_2",
         "tgi-flake": "tgi-flake"
