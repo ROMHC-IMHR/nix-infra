@@ -21,7 +21,15 @@
         service.build.context = "${mineruRepo}/docker/global";
         service.build.dockerfile = "Dockerfile";
         service.ports = ["5000:5000"];
-        service.command = ["mineru-api" "--host" "0.0.0.0" "--port" "5000"];
+        service.command = [
+          "mineru-api"
+          "--host"
+          "0.0.0.0"
+          "--port"
+          "5000"
+          "--gpu-memory-utilization"
+          "0.15"
+        ];
         service.environment = {
           MINERU_MODEL_SOURCE = "local";
         };
