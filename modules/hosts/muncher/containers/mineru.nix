@@ -1,32 +1,30 @@
-{inputs, ...}: {
+{...}: {
   flake.nixosModules.muncher = {pkgs, ...}: let
     mineruRepo = pkgs.fetchFromGitHub {
       owner = "opendatalab";
       repo = "MinerU";
-      rev = "master";
-      hash = pkgs.lib.fakeHash;
+      rev = "a12610fb3e9e24488fe3e76cd233ba88ec64bbaf";
+      hash = "sha256-sSXb8QxtnlDV/5Vba/nvKO414r9eNzZs2WILNvRxi+U=";
     };
   in {
+    hardware.nvidia-container-toolkit.enable = true;
     virtualisation.arion.projects.mineru.settings = {
+      docker-compose.raw = {
+        services.mineru = {
+          shm_size = "16gb";
+        };
+      };
       services.mineru = {
-        build.context = "${mineruRepo}/docker/global";
-        build.dockerfile = "Dockerfile";
+        service.devices = [
+          "nvidia.com/gpu=all"
+        ];
+        service.build.context = "${mineruRepo}/docker/global";
+        service.build.dockerfile = "Dockerfile";
         service.ports = ["5000:5000"];
         service.command = ["mineru-api" "--host" "0.0.0.0" "--port" "5000"];
         service.environment = {
           MINERU_MODEL_SOURCE = "local";
         };
-        service.deploy.resources.reservations.devices = [
-          {
-            driver = "nvidia";
-            count = "all";
-            capabilities = ["gpu"];
-          }
-        ];
-        service.shm_size = "16gb";
-        service.volumes = [
-          "/mnt/ssdstore/containers/mineru/models:/root/.cache"
-        ];
       };
     };
   };
