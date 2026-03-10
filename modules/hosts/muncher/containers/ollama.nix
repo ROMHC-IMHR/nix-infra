@@ -12,6 +12,7 @@
       isSystemUser = true;
       group = "ollama";
       description = "Ollama Service User";
+      extraGroups = ["video" "render"];
       uid = ollamaUid;
     };
     ollamaGroup = {
@@ -50,6 +51,10 @@
           hostPath = "/run/opengl-driver";
           isReadOnly = true;
         };
+        "/proc/driver/nvidia" = {
+          hostPath = "/proc/driver/nvidia";
+          isReadOnly = true;
+        };
       };
       allowedDevices = [
         {
@@ -83,7 +88,7 @@
         services.ollama = {
           enable = true;
           environmentVariables = {
-            OLLAMA_NUM_PARALLEL = "4";
+            OLLAMA_NUM_PARALLEL = "1";
             OLLAMA_FLASH_ATTENTION = "1";
           };
           package = pkgs.ollama-cuda;
