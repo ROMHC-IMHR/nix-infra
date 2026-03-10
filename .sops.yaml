@@ -12,9 +12,9 @@ creation_rules:
           - *muncher
           - *kerry_master
           - *kerry_muncher
-  # - path_regex: ^modules/hosts/muncher/users/kerry/secrets.yaml$
-  #   key_groups:
-  #     - age:
-  #         - *muncher
-  #         - *kerry_master
-  #         - *kerry_muncher
+  - path_regex: ^modules/hosts/muncher/containers/mcpo/secrets.yaml$
+    key_groups:
+      - age:
+          - *muncher
+          - *kerry_master
+          - *kerry_muncher

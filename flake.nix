@@ -16,6 +16,7 @@
     owui-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     ollama-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     docling-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    mcpo-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +26,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tgi-flake.url = "github:huggingface/text-generation-inference";
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     nixpkgs,
