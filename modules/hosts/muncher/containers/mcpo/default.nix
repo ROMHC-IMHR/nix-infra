@@ -52,6 +52,10 @@ in {
               command = lib.getExe pkgs.mcp-nixos;
               args = [];
             };
+            biomcp = {
+              command = lib.getExe self.packages.${pkgs.system}.biomcp;
+              args = ["serve"];
+            };
           };
         };
         # sops = {
