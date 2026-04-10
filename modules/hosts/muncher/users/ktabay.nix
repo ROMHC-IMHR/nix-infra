@@ -9,7 +9,7 @@
       fullname = "Konrad Tabay";
       uid = 1001;
       sshKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJSimJGwX8BKJmip04XakVzcjl39tD09vNICeIK5lO0S"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIALZTjLj4W3UVEw6u3bEhykcGmpxeuuqhOQED20+Zx5q"
       ];
       extraPkgs = with pkgs; [uv];
     };
