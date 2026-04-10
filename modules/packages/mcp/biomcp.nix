@@ -1,19 +1,20 @@
 {...}: {
   perSystem = {pkgs, ...}: {
     packages.biomcp = let
-      src = pkgs.fetchFromGitHub {
-        owner = "genomoncology";
-        repo = "biomcp";
-        rev = "v0.8.14";
-        hash = "sha256-Uf7ar57RKgE/VIqyuvBjM7DTsCQbEW1U4jDmtRSvCac=";
-      };
+      version = "0.8.19";
     in
-      pkgs.rustPlatform.buildRustPackage {
+      pkgs.stdenv.mkDerivation {
         pname = "biomcp";
-        inherit src;
-        version = "0.8.14";
-        cargoLock.lockFile = src + "/Cargo.lock";
-        nativeBuildInputs = [pkgs.protobuf];
+        inherit version;
+        src = pkgs.fetchurl {
+          url = "https://github.com/genomoncology/biomcp/releases/download/v0.8.19/biomcp-linux-x86_64.tar.gz";
+          hash = "sha256:65aaa2401169818c2b989b76bfba314e90d161021d953630a0459f48e0c8175c";
+        };
+        meta.mainProgram = "biomcp";
+        sourceRoot = ".";
+        installPhase = ''
+          install -Dm755 biomcp $out/bin/biomcp
+        '';
       };
   };
 }
