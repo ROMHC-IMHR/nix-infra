@@ -45,7 +45,7 @@ in {
         environment.etc."mcpo/config.json".text = builtins.toJSON {
           mcpServers = {
             arxiv = {
-              command = lib.getExe self.packages.${pkgs.system}.arxiv-mcp-server;
+              command = lib.getExe inputs.kc-nix-infra.packages.${pkgs.system}.arxiv-mcp-server;
               args = ["--storage-path" "/var/lib/mcpo/arxiv"];
             };
             nixos = {
