@@ -53,6 +53,7 @@
       systems = ["x86_64-linux"];
       imports = [
         inputs.home-manager.flakeModules.home-manager
+        inputs.kc-nix-infra.flakeModules.lib
         (inputs.import-tree ./modules)
       ];
     };
