@@ -86,7 +86,7 @@ in {
             User = "mcpo";
             ReadWritePaths = ["/var/lib/mcpo"];
             ExecStart = ''
-              ${lib.getExe self.packages.${pkgs.system}.mcpo} \
+              ${lib.getExe inputs.kc-nix-infra.packages.${pkgs.system}.mcpo} \
                 --port 8000 \
                 --config /etc/mcpo/config.json
             '';

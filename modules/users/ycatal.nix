@@ -3,17 +3,18 @@
     config,
     pkgs,
     ...
-  }: let
-    userParams = {
-      username = "ycatal";
-      fullname = "Yasir Çatal";
+  }: {
+    imports = [(self.lib.muncherUserBindMounts "ycatal")];
+    users.users."ycatal" = {
+      isNormalUser = true;
+      description = "Yasir Çatal";
       uid = 1002;
-      sshKeys = [
+      openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+KnB1UZZpv774N74cAoXUbdrTyUx2ejMsGThlDrjZH catalyasir@gmail.com"
       ];
-      extraPkgs = with pkgs; [uv];
+      packages = with pkgs; [
+        uv
+      ];
     };
-  in {
-    imports = [(self.lib.muncherUser userParams)];
   };
 }

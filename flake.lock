@@ -914,11 +914,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1776885390,
-        "narHash": "sha256-60qHmJm/vieRJvWwv/1G1im9WvH0TvSlZXljsjVDboA=",
+        "lastModified": 1776986918,
+        "narHash": "sha256-29zOr070uD9zPxqIuB3R8346PQG0vLtqnDfv1eS3k4s=",
         "owner": "KerryCerqueira",
         "repo": "nix-infra",
-        "rev": "6cf7a21807dd82e38802c73496b21936f5b86f4b",
+        "rev": "6e3c4fdb196485905f8054876ec51d632c6ab6a3",
         "type": "github"
       },
       "original": {
