@@ -19,9 +19,59 @@
       ...
     }: {
       containers.open-webui = {
+        allowedDevices = [
+          {
+            node = "/dev/nvidia0";
+            modifier = "rw";
+          }
+          {
+            node = "/dev/nvidia1";
+            modifier = "rw";
+          }
+          {
+            node = "/dev/nvidiactl";
+            modifier = "rw";
+          }
+          {
+            node = "/dev/nvidia-uvm";
+            modifier = "rw";
+          }
+          {
+            node = "/dev/nvidia-uvm-tools";
+            modifier = "rw";
+          }
+        ];
         autoStart = true;
         privateNetwork = false;
         bindMounts = {
+          "/dev/nvidia0" = {
+            hostPath = "/dev/nvidia0";
+            isReadOnly = false;
+          };
+          "/dev/nvidia1" = {
+            hostPath = "/dev/nvidia1";
+            isReadOnly = false;
+          };
+          "/dev/nvidiactl" = {
+            hostPath = "/dev/nvidiactl";
+            isReadOnly = false;
+          };
+          "/dev/nvidia-uvm" = {
+            hostPath = "/dev/nvidia-uvm";
+            isReadOnly = false;
+          };
+          "/dev/nvidia-uvm-tools" = {
+            hostPath = "/dev/nvidia-uvm-tools";
+            isReadOnly = false;
+          };
+          "/run/opengl-driver" = {
+            hostPath = "/run/opengl-driver";
+            isReadOnly = true;
+          };
+          "/proc/driver/nvidia" = {
+            hostPath = "/proc/driver/nvidia";
+            isReadOnly = true;
+          };
           "/var/lib/open-webui" = {
             hostPath = owuiStateDir;
             isReadOnly = false;
@@ -49,7 +99,8 @@
               OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
               ENABLE_SIGNUP = "True";
               DEFAULT_USER_ROLE = "pending";
-              USE_CUDA = "True";
+              DEVICE_TYPE = "cuda";
+              USE_CUDA_DOCKER = "True";
             };
             environmentFile = "/run/secrets/openwebui/environment";
           };
