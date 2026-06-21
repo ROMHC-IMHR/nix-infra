@@ -37,7 +37,6 @@ in {
       }: {
         imports = [inputs.sops-nix.nixosModules.sops];
         nixpkgs = {
-          overlays = self.mcp.pythonOverrides;
           config = {
             allowUnfree = true;
           };

@@ -99,7 +99,6 @@
               OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
               ENABLE_SIGNUP = "True";
               DEFAULT_USER_ROLE = "pending";
-              DEVICE_TYPE = "cuda";
               USE_CUDA_DOCKER = "True";
             };
             environmentFile = "/run/secrets/openwebui/environment";

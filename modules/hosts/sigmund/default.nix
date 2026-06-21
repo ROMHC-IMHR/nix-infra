@@ -8,9 +8,7 @@
       gnome
       grub
       nix
-      nvim
-      terminal
-      thunderbird
+      neovim
       inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
     ];
