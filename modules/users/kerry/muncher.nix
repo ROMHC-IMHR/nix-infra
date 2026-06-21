@@ -25,7 +25,7 @@
     home-manager.users.kerry = {imports = [self.homeModules."kerry@muncher"];};
   };
 
-  flake.homeModules."kerry@muncher" = {
+  flake.homeModules."kerry@muncher" = {pkgs, ...}: {
     imports = with inputs.kc-nix-infra.homeModules; [
       neovim
       terminal
@@ -33,6 +33,7 @@
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
     home = {
+      packages = [pkgs.uv];
       stateVersion = "25.11";
       username = "kerry";
       homeDirectory = "/home/kerry";
