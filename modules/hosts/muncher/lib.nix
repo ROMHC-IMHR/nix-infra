@@ -3,16 +3,18 @@
     muncherUserBindMounts = username: let
       hddPath = "/mnt/hddstore/users/${username}";
       hddHomePath = "/home/${username}/hdd";
-      ssdPath = "mnt/ssdstore/users/${username}";
+      ssdPath = "/mnt/ssdstore/users/${username}";
       ssdHomePath = "/home/${username}/ssd";
     in {
       fileSystems."${ssdHomePath}" = {
         device = ssdPath;
+        fsType = "none";
         options = ["bind"];
         depends = ["/mnt/ssdstore"];
       };
       fileSystems."${hddHomePath}" = {
         device = hddPath;
+        fsType = "none";
         options = ["bind"];
         depends = ["/mnt/hddstore"];
       };
