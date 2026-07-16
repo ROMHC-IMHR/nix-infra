@@ -6,6 +6,11 @@ age_keys:
   # Kerry's key on muncher
   - &kerry_muncher age13p04rv6crvj22gqdfjdt4w2edujt76wf3kyf4p3x2jtnjclc7a8qmasr5s
 creation_rules:
+  - path_regex: (^|/)(muncher/secrets|secrets/muncher)(/.+|\.[^/]+)$
+    key_groups:
+      - age:
+        - *muncher
+        - *kerry_master
   - path_regex: ^modules/hosts/muncher/secrets.yaml$
     key_groups:
       - age:

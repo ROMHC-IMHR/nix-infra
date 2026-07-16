@@ -17,10 +17,6 @@
       extraGroups = ["networkmanager" "wheel"];
       uid = 1000;
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtCFAEnUE/6pRWjylYWqAgsfswF0GTlK04ZKMjWNiZn kerry@claudius"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBmUNLUG51hW3fk/rKwHichUuxAJCZ0JYcwOUt2B6JaU kerry@sebastiao"
-      ];
     };
     home-manager.users.kerry = {imports = [self.homeModules."kerry@muncher"];};
   };
@@ -34,7 +30,6 @@
     programs.home-manager.enable = true;
     home = {
       packages = [pkgs.uv];
-      stateVersion = "25.11";
       username = "kerry";
       homeDirectory = "/home/kerry";
     };
