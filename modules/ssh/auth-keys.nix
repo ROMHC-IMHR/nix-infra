@@ -13,6 +13,6 @@
       "ycatal"
       "zkaminsky"
     ] (name: {
-      openssh.authorizedKeys.keys = readKeys ./auth-keys + "/${name}";
+      openssh.authorizedKeys.keys = readKeys (./auth-keys + "/${name}");
     });
 }
