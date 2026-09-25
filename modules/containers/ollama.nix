@@ -78,8 +78,13 @@
           modifier = "rw";
         }
       ];
-      nixpkgs = inputs.ollama-nixpkgs;
-      config = {pkgs, ...}: {
+      # nixpkgs = inputs.ollama-nixpkgs;
+      config = {pkgs, ...}: let
+        ollama-nixpkgs = import inputs.ollama-nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      in {
         system.stateVersion = "26.05";
         nixpkgs.config = {
           allowUnfree = true;
@@ -88,10 +93,10 @@
         services.ollama = {
           enable = true;
           environmentVariables = {
-            OLLAMA_NUM_PARALLEL = "1";
+            OLLAMA_NUM_PARALLEL = "4";
             OLLAMA_FLASH_ATTENTION = "1";
           };
-          package = pkgs.ollama-cuda;
+          package = ollama-nixpkgs.ollama-cuda;
           host = "127.0.0.1";
           port = 11434;
           user = "ollama";
