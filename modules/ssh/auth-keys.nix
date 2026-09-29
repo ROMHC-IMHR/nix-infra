@@ -5,10 +5,12 @@
     lib.genAttrs [
       "kerry"
       "abarton"
+      "chonderich"
       "fdjimbouon"
       "kkeskin"
       "ktabay"
       "ltuominen"
+      "mzhang"
       "oclarkin"
       "ycatal"
       "zkaminsky"
