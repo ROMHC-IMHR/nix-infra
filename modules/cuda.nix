@@ -1,4 +1,4 @@
-{self, ...}: {
+{
   flake.nixosModules.cuda = {pkgs, ...}: {
     nixpkgs.config = {
       allowUnfree = true;
@@ -14,5 +14,8 @@
       cudaPackages.cudnn
     ];
   };
-  flake.nixosModules.muncher.imports = [self.nixosModules.cuda];
+  deployments.nixosModules.cuda = [
+    "muncher"
+    "scruncher"
+  ];
 }

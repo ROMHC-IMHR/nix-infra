@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.muncher = {pkgs, ...}: {
+  flake.nixosModules.common-shell = {pkgs, ...}: {
     programs = {
       zsh.enable = true;
       fish.enable = true;
@@ -12,7 +12,7 @@
         enableFishIntegration = true;
       };
     };
-    users.defaultUserShell = pkgs.zsh;
+    users.defaultUserShell = pkgs.fish;
     users.users.root.shell = pkgs.bash;
     environment.systemPackages = with pkgs; [
       git
@@ -29,4 +29,8 @@
       kitty.terminfo
     ];
   };
+  deployments.nixosModules.common-shell = [
+    "muncher"
+    "scruncher"
+  ];
 }

@@ -20,6 +20,9 @@
         };
       };
     };
-    muncher.imports = [self.nixosModules.nix];
   };
+  deployments.nixosModules.nix = [
+    "muncher"
+    "scruncher"
+  ];
 }

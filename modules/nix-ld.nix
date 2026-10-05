@@ -1,4 +1,4 @@
-{self, ...}: {
+{
   flake.nixosModules.nix-ld = {pkgs, ...}: {
     programs.nix-ld = {
       enable = true;
@@ -24,5 +24,8 @@
       ];
     };
   };
-  flake.nixosModules.muncher.imports = [self.nixosModules.nix-ld];
+  deployments.nixosModules.nix-ld = [
+    "muncher"
+    "scruncher"
+  ];
 }

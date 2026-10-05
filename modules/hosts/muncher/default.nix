@@ -16,7 +16,7 @@
     };
     homeModules = {
       muncher.home.stateVersion = "25.11";
-      "kerry@muncher".imports = [self.homeModules.muncher];
+      kerry-muncher.imports = [self.homeModules.muncher];
     };
   };
 }
