@@ -2,10 +2,12 @@
   self,
   inputs,
   ...
-}: {
+}: let
+  stateVersion = "25.11";
+in {
   flake = {
     nixosModules.muncher = {
-      system.stateVersion = "25.11";
+      system.stateVersion = stateVersion;
       imports = [inputs.home-manager.nixosModules.home-manager];
     };
     nixosConfigurations.muncher = inputs.nixpkgs.lib.nixosSystem {
@@ -15,7 +17,7 @@
       ];
     };
     homeModules = {
-      muncher.home.stateVersion = "25.11";
+      muncher.home.stateVersion = stateVersion;
       kerry-muncher.imports = [self.homeModules.muncher];
     };
   };
