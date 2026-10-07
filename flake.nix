@@ -2,6 +2,10 @@
   description = "AI infrastructure at IMHR.";
   inputs = {
     arion.url = "github:hercules-ci/arion";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     kc-nix-infra = {
