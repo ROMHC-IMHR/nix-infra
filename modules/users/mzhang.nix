@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.mzhang = {
     config,
     pkgs,
     ...
@@ -11,4 +11,5 @@
       uid = 1009;
     };
   };
+  deployments.nixosModules.mzhang = ["muncher"];
 }

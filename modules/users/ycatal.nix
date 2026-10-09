@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.ycatal = {
     config,
     pkgs,
     ...
@@ -14,4 +14,5 @@
       ];
     };
   };
+  deployments.nixosModules.ycatal = ["muncher"];
 }

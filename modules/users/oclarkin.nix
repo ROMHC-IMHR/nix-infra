@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.oclarkin = {
     config,
     pkgs,
     ...
@@ -14,4 +14,5 @@
       ];
     };
   };
+  deployments.nixosModules.oclarkin = ["muncher"];
 }

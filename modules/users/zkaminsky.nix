@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.zkaminsky = {
     config,
     pkgs,
     ...
@@ -14,4 +14,5 @@
       ];
     };
   };
+  deployments.nixosModules.zkaminsky = ["muncher"];
 }

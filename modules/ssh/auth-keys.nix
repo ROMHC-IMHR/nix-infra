@@ -1,20 +1,21 @@
-{lib, ...}: {
-  flake.nixosModules.ssh.users.users = let
-    readKeys = keyPath: lib.splitString "\n" (builtins.readFile keyPath);
-  in
-    lib.genAttrs [
-      "kerry"
-      "abarton"
-      "chonderich"
-      "fdjimbouon"
-      "kkeskin"
-      "ktabay"
-      "ltuominen"
-      "mzhang"
-      "oclarkin"
-      "ycatal"
-      "zkaminsky"
-    ] (name: {
-      openssh.authorizedKeys.keys = readKeys (./auth-keys + "/${name}");
-    });
+{lib, ...}: let
+  readKeys = keyPath: lib.splitString "\n" (builtins.readFile keyPath);
+  users = [
+    "kerry"
+    "abarton"
+    "chonderich"
+    "fdjimbouon"
+    "kkeskin"
+    "ktabay"
+    "ltuominen"
+    "mzhang"
+    "oclarkin"
+    "ycatal"
+    "zkaminsky"
+  ];
+in {
+  flake.nixosModules = lib.genAttrs users (name: {
+    users.users.${name}.openssh.authorizedKeys.keys =
+      readKeys (./auth-keys + "/${name}");
+  });
 }

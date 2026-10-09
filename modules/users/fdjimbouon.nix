@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.muncher = {
+  flake.nixosModules.fdjimbouon = {
     config,
     pkgs,
     ...
@@ -14,4 +14,5 @@
     };
     imports = [(self.lib.muncherUserBindMounts "fdjimbouon")];
   };
+  deployments.nixosModules.fdjimbouon = ["muncher"];
 }
