@@ -16,6 +16,10 @@ in {
     nixosConfigurations.muncher = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [self.nixosModules.muncher];
+      sops = {
+        defaultSopsFile = ./secrets.yaml;
+        defaultSopsFormat = "yaml";
+      };
     };
     homeModules = {
       muncher.home.stateVersion = stateVersion;
