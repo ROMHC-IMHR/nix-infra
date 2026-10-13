@@ -18,6 +18,6 @@ in {
       modules = [self.nixosModules.muncher];
     };
     homeModules.muncher.home.stateVersion = stateVersion;
-    deployments.homeModules.muncher = ["kerry-muncher"];
   };
+  deployments.homeModules.muncher = ["kerry-muncher"];
 }

@@ -4,7 +4,7 @@
     assertions = [
       {
         assertion = config.boot.initrd.systemd.enable;
-        message = "scruncher: TPM2 crypttab options require systemd stage-1 (boot.initrd.systemd.enable = true)";
+        message = "${config.networking.hostName}: TPM2 crypttab options require systemd stage-1 (boot.initrd.systemd.enable = true)";
       }
     ];
   };

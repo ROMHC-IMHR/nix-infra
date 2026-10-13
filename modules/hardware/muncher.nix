@@ -2,7 +2,6 @@
   flake.nixosModules.muncher = {
     config,
     pkgs,
-    lib,
     ...
   }: {
     boot = {

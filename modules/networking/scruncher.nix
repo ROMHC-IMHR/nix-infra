@@ -1,7 +1,6 @@
 {
   flake.nixosModules.scruncher = {
     networking = {
-      hostName = "scruncher";
       useDHCP = false;
       interfaces = {
         ens22f0 = {
