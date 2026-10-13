@@ -1,6 +1,7 @@
 {
   flake.nixosModules.muncher = {
     config,
+    pkgs,
     lib,
     ...
   }: {
@@ -20,6 +21,21 @@
     hardware = {
       cpu.intel.updateMicrocode = true;
       enableRedistributableFirmware = true;
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+      nvidia = {
+        modesetting.enable = true;
+        open = false;
+        nvidiaSettings = false;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
+      };
     };
+    services.xserver.videoDrivers = ["nvidia"];
+    environment.systemPackages = with pkgs; [
+      nvtopPackages.nvidia
+      clinfo
+    ];
   };
 }

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.HOSTNAME = {pkgs, ...}: {
+  flake.nixosModules.scruncher = {pkgs, ...}: {
     boot = {
       initrd.availableKernelModules = [
         "xhci_pci"
