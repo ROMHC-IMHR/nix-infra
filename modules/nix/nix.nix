@@ -22,7 +22,7 @@
     };
   };
   deployments.nixosModules.nix = [
-    "muncher"
-    "scruncher"
+    "muncher-core"
+    "scruncher-core"
   ];
 }

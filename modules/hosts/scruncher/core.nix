@@ -10,7 +10,6 @@
       xkb.layout = "us";
       xkb.variant = "";
     };
-    nixpkgs.config.allowUnfree = true;
   };
   deployments.nixosModules.scruncher-core = [
     "scruncher"

@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}: {
+{inputs, ...}: {
   flake.nixosModules.installer = {
     modulesPath,
     pkgs,
