@@ -26,8 +26,9 @@
   deployments.nixosModules = {
     boot = [
       "lanzaboote"
+    ];
+    lanzaboote = [
       "scruncher"
     ];
-    lanzaboote = [];
   };
 }
