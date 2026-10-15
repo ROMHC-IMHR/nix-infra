@@ -23,8 +23,4 @@ in {
         defaultSopsFormat = "yaml";
       };
     });
-  deployments.nixosModules.sops = [
-    "scruncher"
-    "muncher"
-  ];
 }
