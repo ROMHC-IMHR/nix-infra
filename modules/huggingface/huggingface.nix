@@ -13,10 +13,12 @@
           format = "binary";
           owner = "kerry";
           mode = "0400";
+          # TODO: set HF_TOKEN_PATH instead in a wrapped hf-hub drv
+          #TODO: should be a system concern, not deployed to a specific user?
         };
       });
     homeModules.huggingface = {pkgs, ...}: {
-      home.packages = [pkgs.python314Packages.huggingface-hub];
+      home.packages = [pkgs.python3Packages.huggingface-hub];
     };
   };
   deployments.homeModules.huggingface = ["kerry-scruncher"];

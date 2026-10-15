@@ -20,4 +20,5 @@
         !include ${config.sops.templates.nix-github-token.path}
       '';
     });
+  #TODO: Make template readable by wheel so token is readable outside of sudo
 }
