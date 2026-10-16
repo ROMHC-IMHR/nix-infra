@@ -14,5 +14,8 @@
       ];
     };
   };
-  deployments.nixosModules.abarton = ["muncher"];
+  deployments.nixosModules.abarton = [
+    "muncher"
+    "scruncher"
+  ];
 }

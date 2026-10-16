@@ -63,4 +63,5 @@
       };
     }
   );
+  deployments.nixosModules.vllm-workhorse = ["scruncher"];
 }
