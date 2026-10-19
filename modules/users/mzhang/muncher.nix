@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.mzhang = {
+  flake.nixosModules.mzhang-muncher = {
     config,
     pkgs,
     ...
@@ -8,8 +8,8 @@
     users.users."mzhang" = {
       isNormalUser = true;
       description = "Mengfang Zhang";
-      uid = 1009;
+      uid = self.lib.constants.uids.mzhang;
     };
   };
-  deployments.nixosModules.mzhang = ["muncher"];
+  deployments.nixosModules.mzhang-muncher = ["muncher"];
 }

@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.oclarkin = {
+  flake.nixosModules.oclarkin-muncher = {
     config,
     pkgs,
     ...
@@ -8,11 +8,9 @@
     users.users."oclarkin" = {
       isNormalUser = true;
       description = "Owen Clarkin";
-      uid = 1006;
-      packages = with pkgs; [
-        uv
-      ];
+      uid = self.lib.constants.uids.oclarkin;
+      packages = with pkgs; [uv];
     };
   };
-  deployments.nixosModules.oclarkin = ["muncher"];
+  deployments.nixosModules.oclarkin-muncher = ["muncher"];
 }

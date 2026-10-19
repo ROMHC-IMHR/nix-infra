@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.chonderich = {
+  flake.nixosModules.chonderich-muncher = {
     config,
     pkgs,
     ...
@@ -8,11 +8,11 @@
     users.users."chonderich" = {
       isNormalUser = true;
       description = "Claire Honderich";
-      uid = 1010;
+      uid = self.lib.constants.uids.chonderich;
       packages = with pkgs; [
         uv
       ];
     };
   };
-  deployments.nixosModules.chonderich = ["muncher"];
+  deployments.nixosModules.chonderich-muncher = ["muncher"];
 }

@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.ycatal = {
+  flake.nixosModules.ycatal-muncher = {
     config,
     pkgs,
     ...
@@ -8,11 +8,9 @@
     users.users."ycatal" = {
       isNormalUser = true;
       description = "Yasir Çatal";
-      uid = 1002;
-      packages = with pkgs; [
-        uv
-      ];
+      uid = self.lib.constants.uids.ycatal;
+      packages = with pkgs; [uv];
     };
   };
-  deployments.nixosModules.ycatal = ["muncher"];
+  deployments.nixosModules.ycatal-muncher = ["muncher"];
 }

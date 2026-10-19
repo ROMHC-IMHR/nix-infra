@@ -8,11 +8,11 @@
     users.users."ltuominen" = {
       isNormalUser = true;
       description = "Lauri Tuominen";
-      uid = 1003;
+      uid = self.lib.constants.uids.ltuominen;
       packages = with pkgs; [
         uv
       ];
     };
   };
-  deployments.nixosModules.ltuominen = ["muncher"];
+  deployments.nixosModules.ltuominen-muncher = ["muncher"];
 }

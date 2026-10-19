@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.zkaminsky = {
+  flake.nixosModules.zkaminsky-muncher = {
     config,
     pkgs,
     ...
@@ -8,11 +8,9 @@
     users.users."zkaminsky" = {
       isNormalUser = true;
       description = "Zachary Kaminsky";
-      uid = 1008;
-      packages = with pkgs; [
-        uv
-      ];
+      uid = self.lib.constants.uids.zkaminsky;
+      packages = with pkgs; [uv];
     };
   };
-  deployments.nixosModules.zkaminsky = ["muncher"];
+  deployments.nixosModules.zkaminsky-muncher = ["muncher"];
 }

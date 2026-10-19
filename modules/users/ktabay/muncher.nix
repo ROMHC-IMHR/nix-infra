@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.ktabay = {
+  flake.nixosModules.ktabay-muncher = {
     config,
     pkgs,
     ...
@@ -8,11 +8,11 @@
     users.users."ktabay" = {
       isNormalUser = true;
       description = "Konrad Tabay";
-      uid = 1001;
+      uid = self.lib.constants.uids.ktabay;
       packages = with pkgs; [
         uv
       ];
     };
   };
-  deployments.nixosModules.ktabay = ["muncher"];
+  deployments.nixosModules.ktabay-muncher = ["muncher"];
 }
