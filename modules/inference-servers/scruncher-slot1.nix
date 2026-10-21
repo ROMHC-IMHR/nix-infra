@@ -1,14 +1,14 @@
 {moduleWithSystem, ...}: {
   flake.nixosModules.vllm-workhorse = moduleWithSystem (
     {self'}: {...}: let
-      model = builtins.unsafeDiscardStringContext self'.packages.qwen3_8-27b-fp8.outPath;
+      model = self'.packages.qwen3_8-27b-fp8.outPath;
       port = 18001;
     in {
       hardware.nvidia-container-toolkit.enable = true;
       virtualisation.oci-containers = {
         backend = "podman";
         containers.vllm-workhorse = {
-          image = "docker.io/vllm/vllm-openai@sha256:c2914767605584b6d8f45686b82de173ecc99e781897aa3d0a66dacd72c51ae1";
+          image = "docker.io/vllm/vllm-openai@sha256:6ee133356d49ed24cee03dd0cda3d3980279a11c107ce3e752c89e76540f41c9";
           cmd = [
             model
             "--served-model-name"
@@ -52,6 +52,7 @@
             "--health-cmd=curl -fsS http://127.0.0.1:${toString port}/health"
             "--health-interval=10s"
             "--health-start-period=30m"
+            "--cpuset-cpus=0-31,64-95"
           ];
           podman.sdnotify = "healthy";
         };

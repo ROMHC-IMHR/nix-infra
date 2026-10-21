@@ -7,7 +7,7 @@
         repoId = "Intel/Qwen3.8-Flash-Next-W4A16-AutoRound";
         rev = "4c67bf686b7f7fd386bae6b07ab59e8ff1d5b897";
         backend = "lfs";
-        hash = lib.fakeHash; # replace with the hash prefetch-model.sh prints
+        hash = "sha256-0dI5NlahNV+drj5LNbQirvKucSiTymSWltlBw7o0kSI=";
       };
     };
 }
