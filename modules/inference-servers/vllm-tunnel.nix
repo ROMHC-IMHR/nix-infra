@@ -19,9 +19,10 @@ in {
       };
     };
     muncher = {lib, ...}: {
+      networking.hosts."${self.lib.constants.hostIPs.scruncher}" = ["scruncher"];
       services.autossh-ng.sessions.vllm = {
         user = "root";
-        destination = "vllm-tunnel@scruncher";
+        destination = "vllm-tunnel@10.156.156.140";
         hostKeyChecking = true;
         knownHostsFile = "/etc/ssh/ssh_known_hosts";
         extraArguments = lib.mkMerge (

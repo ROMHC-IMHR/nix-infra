@@ -1,4 +1,4 @@
-{
+{self,...}: {
   flake.nixosModules.scruncher = {
     networking = {
       useDHCP = false;
@@ -6,7 +6,7 @@
         ens22f0 = {
           ipv4.addresses = [
             {
-              address = "10.156.156.140";
+              address = self.lib.constants.hostIPs.scruncher;
               prefixLength = 24;
             }
           ];
