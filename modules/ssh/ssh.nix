@@ -1,4 +1,4 @@
-{
+{self, ...}: {
   flake = {
     nixosModules.ssh = {lib, ...}: {
       programs.ssh.knownHosts =
@@ -7,8 +7,7 @@
           "muncher"
         ] (host: {
           hostNames = [host];
-          publicKey =
-            builtins.readFile (./public-keys + "/${host}/root_ed25519.pub");
+          publicKey = self.lib.constants.knownHostPKs.${host};
         });
       services.openssh = {
         enable = true;
