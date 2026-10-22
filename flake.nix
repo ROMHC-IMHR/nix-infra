@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    owui-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    owui-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     ollama-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -46,8 +46,6 @@
   outputs = {
     nixpkgs,
     flake-parts,
-    expy,
-    tgi-flake,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {

@@ -1,13 +1,24 @@
 {
   flake = {
-    nixosModules.ssh.services.openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        PermitRootLogin = "prohibit-password";
-        UseDns = false;
-        StrictModes = true;
+    nixosModules.ssh = {lib, ...}: {
+      programs.ssh.knownHosts =
+        lib.genAttrs [
+          "scruncher"
+          "muncher"
+        ] (host: {
+          hostNames = [host];
+          publicKey =
+            builtins.readFile (./public-keys + "/${host}/root_ed25519.pub");
+        });
+      services.openssh = {
+        enable = true;
+        settings = {
+          PasswordAuthentication = false;
+          KbdInteractiveAuthentication = false;
+          PermitRootLogin = "prohibit-password";
+          UseDns = false;
+          StrictModes = true;
+        };
       };
     };
     homeModules.ssh.programs.ssh = {
