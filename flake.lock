@@ -428,11 +428,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1789358782,
-        "narHash": "sha256-kEy+JBwxoePMb7ExtyF+jwMKLMJqnPqsYq8DBCBhABc=",
+        "lastModified": 1792685472,
+        "narHash": "sha256-JBelZ3ik8ryecqQfPrweuyKuGap43//pT/f8G1jtIqc=",
         "owner": "KerryCerqueira",
         "repo": "nix-infra",
-        "rev": "9c1f6341c61fb40e3a5cdcdca8527886cd55b608",
+        "rev": "86b6c8aacfa6d44d5df8ffb27d7acb7a34c28f24",
         "type": "github"
       },
       "original": {
