@@ -17,7 +17,15 @@
       config,
       lib,
       ...
-    }: {
+    }: let
+      owui-nixpkgs = import inputs.owui-nixpkgs {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          cudaSupport = true;
+        };
+      };
+    in {
       containers.open-webui = {
         allowedDevices = [
           {
@@ -81,13 +89,13 @@
             isReadOnly = true;
           };
         };
-        nixpkgs = inputs.owui-nixpkgs;
         config = {pkgs, ...}: {
           nixpkgs.config = {
             allowUnfree = true;
             cudaSupport = true;
           };
           services.open-webui = {
+            package = owui-nixpkgs.open-webui;
             enable = true;
             port = 8080;
             host = "0.0.0.0";

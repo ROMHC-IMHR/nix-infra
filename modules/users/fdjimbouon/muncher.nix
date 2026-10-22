@@ -12,5 +12,5 @@
     };
     imports = [(self.lib.muncherUserBindMounts "fdjimbouon")];
   };
-  deployments.nixosModules.fdjimbouon = ["muncher"];
+  deployments.nixosModules.fdjimbouon-muncher = ["muncher"];
 }

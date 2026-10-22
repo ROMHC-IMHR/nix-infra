@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.ltuominen = {
+  flake.nixosModules.ltuominen-muncher = {
     config,
     pkgs,
     ...

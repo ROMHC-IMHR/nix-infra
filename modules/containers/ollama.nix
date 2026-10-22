@@ -78,7 +78,6 @@
           modifier = "rw";
         }
       ];
-      # nixpkgs = inputs.ollama-nixpkgs;
       config = {pkgs, ...}: let
         ollama-nixpkgs = import inputs.ollama-nixpkgs {
           system = "x86_64-linux";

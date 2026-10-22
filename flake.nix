@@ -19,16 +19,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     owui-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     ollama-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    mcpo-nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    expy = {
-      url = "github:KerryCerqueira/expy";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    tgi-flake.url = "github:huggingface/text-generation-inference";
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";

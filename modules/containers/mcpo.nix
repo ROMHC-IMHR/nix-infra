@@ -28,7 +28,6 @@ in {
         #   isReadOnly = true;
         # };
       };
-      nixpkgs = inputs.owui-nixpkgs;
       config = {
         config,
         pkgs,
