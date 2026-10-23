@@ -5,11 +5,7 @@
     ...
   }: {
     imports = [(self.lib.muncherUserBindMounts "mzhang")];
-    users.users."mzhang" = {
-      isNormalUser = true;
-      description = "Mengfang Zhang";
-      uid = self.lib.constants.uids.mzhang;
-    };
+    users.users."mzhang".uid = self.lib.constants.uids.mzhang;
   };
   deployments.nixosModules.mzhang-muncher = ["muncher"];
 }
