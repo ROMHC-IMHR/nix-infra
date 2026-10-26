@@ -22,6 +22,7 @@
         "oclarkin"
         "ycatal"
         "zkaminsky"
+        "zvachon"
       ] (user: readKeys (./auth-keys + "/${user}"));
   };
 }

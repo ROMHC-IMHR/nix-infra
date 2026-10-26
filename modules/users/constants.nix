@@ -11,5 +11,6 @@
     oclarkin = 1006;
     ycatal = 1002;
     zkaminsky = 1008;
+    zvachon = 1011;
   };
 }

@@ -16,6 +16,7 @@
       "oclarkin"
       "ycatal"
       "zkaminsky"
+      "zvachon"
     ] (user: {
       users.users.${user}.openssh.authorizedKeys.keys = self.lib.constants.userAuthPKs.${user};
     });
